@@ -1,0 +1,73 @@
+# === Bases de datos y datos sensibles ===
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.db-wal
+radar_lab.db
+backend/radar_lab.db
+
+# === Backups ===
+backups/
+
+# === Dumps en raíz ===
+database_dump.txt
+models_dump.txt
+watchdog_dump.txt
+
+# === Informes generados ===
+backend/data/reports/
+
+# === Backup específico de Alembic (decisión B) ===
+/backend/alembic/env.py.bak
+
+# === Credenciales y variables de entorno ===
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+credentials/
+
+# === Cachés y artefactos ===
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+node_modules/
+dist/
+build/
+*.egg-info/
+
+# === Entornos virtuales ===
+.venv/
+venv/
+env/
+
+# === Logs ===
+*.log
+logs/
+
+# === Sistema operativo / editor ===
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# === Claves SSH privadas (sin extensión) ===
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+
+# === Almacenes de claves privados ===
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# === Códigos de recuperación de GitHub ===
+github-recovery-codes.txt
+github_recovery_codes.txt
