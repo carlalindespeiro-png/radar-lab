@@ -6,8 +6,14 @@ from alembic.config import Config
 from sqlalchemy import create_engine, event
 from sqlalchemy.pool import NullPool
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
-BACKEND = REPO_ROOT / "backend"
+# conftest.py está en: backend/alembic/versions/tests/conftest.py
+#   parents[0] -> tests
+#   parents[1] -> versions
+#   parents[2] -> alembic
+#   parents[3] -> backend      <-- lo que queremos
+#   parents[4] -> radar-lab
+BACKEND = Path(__file__).resolve().parents[3]
+REPO_ROOT = BACKEND.parent
 FIXTURES = Path(__file__).resolve().parent / "fixtures"
 
 sys.path.insert(0, str(BACKEND))
@@ -45,6 +51,7 @@ def sqlite_path(temp_db_url):
 def alembic_config(temp_db_url):
     cfg = Config()
     cfg.set_main_option("script_location", str(BACKEND / "alembic"))
+    cfg.set_main_option("path_separator", "os")
     cfg.attributes["sqlalchemy_url_override"] = temp_db_url
     return cfg
 
@@ -53,6 +60,7 @@ def alembic_config(temp_db_url):
 def failing_alembic_config(temp_db_url):
     cfg = Config()
     cfg.set_main_option("script_location", str(BACKEND / "alembic"))
+    cfg.set_main_option("path_separator", "os")
     cfg.set_main_option("version_locations", str(FIXTURES / "versions_failing"))
     cfg.attributes["sqlalchemy_url_override"] = temp_db_url
     return cfg

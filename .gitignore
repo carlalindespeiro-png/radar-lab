@@ -71,3 +71,5 @@ id_ed25519
 # === Códigos de recuperación de GitHub ===
 github-recovery-codes.txt
 github_recovery_codes.txt
+# === Backups locales / temporales ===
+*.bak
